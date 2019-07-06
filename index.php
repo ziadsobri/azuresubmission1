@@ -26,13 +26,8 @@
        <input type="submit" name="load_data" value="Load Data" />
  </form>
  <?php
-    $host = "tcp:bobbydeveloper.database.windows.net,1433";
-    $user = "bobby";
-    $pass = "t130b315";
-    $db = "registrasi";
-
     try {
-        $conn = new PDO("sqlsrv:server = $host; Database = $db", $user, $pass);
+        $conn = new PDO("sqlsrv:server = tcp:bobbydeveloper.database.windows.net,1433; Database = registrasi", "bobby", "t130b315");
         $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
     } catch(Exception $e) {
         echo "Failed: " . $e;
