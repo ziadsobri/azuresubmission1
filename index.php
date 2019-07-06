@@ -82,9 +82,6 @@
             echo "Failed: " . $e;
         }
     }
-$connectionInfo = array("UID" => "bobby@bobbydeveloper", "pwd" => "t130b315", "Database" => "registrasi", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
-$serverName = "tcp:bobbydeveloper.database.windows.net,1433"
-$conn = sqlsrv_connect($serverName, $connectionInfo);
  ?>
  </body>
  </html>
