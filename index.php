@@ -23,14 +23,13 @@
        Email <input type="text" name="email" id="email"/></br></br>
        Pekerjaan <input type="text" name="job" id="job"/></br></br>
        <input type="submit" name="submit" value="Submit" />
-       <input type="submit" name="load_data" value="Load Data" />
+       <input type="submit" name="load_data" value="Tampilkan Data" />
  </form>
  <?php
-    // SQL Server Extension Sample Code:
-$connectionInfo = array("UID" => "bobby@bobbydeveloper", "pwd" => "t130b315", "Database" => "registrasi", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
-$serverName = "tcp:bobbydeveloper.database.windows.net,1433";
-$conn = sqlsrv_connect($serverName, $connectionInfo);
     try {
+        $connectionInfo = array("UID" => "bobby@bobbydeveloper", "pwd" => "t130b315", "Database" => "registrasi", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
+        $serverName = "tcp:bobbydeveloper.database.windows.net,1433";
+        $conn = sqlsrv_connect($serverName, $connectionInfo);
         $conn = new PDO("sqlsrv:server = tcp:bobbydeveloper.database.windows.net,1433; Database = registrasi", "bobby", "t130b315");
         $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
     } catch(Exception $e) {
