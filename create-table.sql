@@ -1,7 +1,7 @@
 create table [dbo].[registrasi](
-    id INT NOT NULL IDENTITY(1,1) PRIMARY KEY(id),
-    name VARCHAR(30),
-    email VARCHAR(30),
-    job VARCHAR(30),
-    date DATE
+    id int NOT NULL identity(1,1) primary key(id),
+    name varchar(30),
+    email varchar(30),
+    job varchar(30),
+    date date
 );
