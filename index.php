@@ -1,6 +1,6 @@
 <html>
  <head>
- <Title>Registration Form</Title>
+ <Title>Formulir Pendaftaran</Title>
  <style type="text/css">
  	body { background-color: #fff; border-top: solid 10px #000;
  	    color: #333; font-size: .85em; margin: 20; padding: 20;
@@ -16,20 +16,20 @@
  </style>
  </head>
  <body>
- <h1>Register here!</h1>
- <p>Fill in your name and email address, then click <strong>Submit</strong> to register.</p>
+ <h1>Daftar di sini!</h1>
+ <p>Isikan nama dan alamat email Anda, lalu klik <strong>Submit</strong> untuk mendaftar.</p>
  <form method="post" action="index.php" enctype="multipart/form-data" >
-       Name  <input type="text" name="name" id="name"/></br></br>
+       Nama  <input type="text" name="name" id="name"/></br></br>
        Email <input type="text" name="email" id="email"/></br></br>
-       Job <input type="text" name="job" id="job"/></br></br>
+       Pekerjaan <input type="text" name="job" id="job"/></br></br>
        <input type="submit" name="submit" value="Submit" />
        <input type="submit" name="load_data" value="Load Data" />
  </form>
  <?php
-    $host = "<Nama server database Anda>";
-    $user = "<Nama admin database Anda>";
-    $pass = "<Password admin database Anda>";
-    $db = "<Nama database Anda>";
+    $host = "tcp:bobbydeveloper.database.windows.net,1433";
+    $user = "bobby";
+    $pass = "t130b315";
+    $db = "registrasi";
 
     try {
         $conn = new PDO("sqlsrv:server = $host; Database = $db", $user, $pass);
@@ -45,7 +45,7 @@
             $job = $_POST['job'];
             $date = date("Y-m-d");
             // Insert data
-            $sql_insert = "INSERT INTO Registration (name, email, job, date) 
+            $sql_insert = "INSERT INTO registrasi (name, email, job, date) 
                         VALUES (?,?,?,?)";
             $stmt = $conn->prepare($sql_insert);
             $stmt->bindValue(1, $name);
@@ -57,19 +57,19 @@
             echo "Failed: " . $e;
         }
 
-        echo "<h3>Your're registered!</h3>";
+        echo "<h3>Anda telah terdaftar!</h3>";
     } else if (isset($_POST['load_data'])) {
         try {
-            $sql_select = "SELECT * FROM Registration";
+            $sql_select = "SELECT * FROM registrasi";
             $stmt = $conn->query($sql_select);
             $registrants = $stmt->fetchAll(); 
             if(count($registrants) > 0) {
-                echo "<h2>People who are registered:</h2>";
+                echo "<h2>Peserta terdaftar:</h2>";
                 echo "<table>";
-                echo "<tr><th>Name</th>";
+                echo "<tr><th>Nama</th>";
                 echo "<th>Email</th>";
-                echo "<th>Job</th>";
-                echo "<th>Date</th></tr>";
+                echo "<th>Pekerjaan</th>";
+                echo "<th>Tanggal</th></tr>";
                 foreach($registrants as $registrant) {
                     echo "<tr><td>".$registrant['name']."</td>";
                     echo "<td>".$registrant['email']."</td>";
@@ -78,7 +78,7 @@
                 }
                 echo "</table>";
             } else {
-                echo "<h3>No one is currently registered.</h3>";
+                echo "<h3>Belum ada yang terdaftar.</h3>";
             }
         } catch(Exception $e) {
             echo "Failed: " . $e;
