@@ -26,7 +26,7 @@
        <input type="submit" name="load_data" value="Tampilkan Data" />
  </form>
  <?php
-   $connectionInfo = array("UID" => "bobby@bobbydeveloper", "pwd" => "T130b315", "Database" => "registrasi", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);        
+   $connectionInfo = array("UID" => "bobby", "pwd" => "T130b315", "Database" => "registrasi");        
    $serverName = "tcp:bobbydeveloper.database.windows.net,1433";
    $conn = sqlsrv_connect($serverName, $connectionInfo);
     try {
