@@ -31,9 +31,10 @@ try {
     $conn = new PDO("sqlsrv:server = tcp:registrasi.database.windows.net,1433; Database = registrasi", "bobby", "T130b315");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
-} catch(Exception $e) {
-            echo "Failed: " . $e;
-        }
+catch (PDOException $e) {
+    print("Error connecting to SQL Server.");
+    die(print_r($e));
+}
 
 // SQL Server Extension Sample Code:
 $connectionInfo = array("UID" => "bobby@registrasi", "pwd" => "T130b315", "Database" => "registrasi", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
