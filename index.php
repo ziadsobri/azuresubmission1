@@ -33,6 +33,11 @@
         print("Error connecting to SQL Server.");
         die(print_r($e));
     }
+    // SQL Server Extension Sample Code:
+    $connectionInfo = array("UID" => "bobby@bobbydeveloper", "pwd" => "T130b315", "Database" => "registrasi", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
+    $serverName = "tcp:bobbydeveloper.database.windows.net,1433";
+    $conn = sqlsrv_connect($serverName, $connectionInfo);
+
     if (isset($_POST['submit'])) {
         try {
             $name = $_POST['name'];
