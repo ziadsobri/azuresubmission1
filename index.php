@@ -27,10 +27,10 @@
  </form>
  <?php
     try {
-        $connectionInfo = array("UID" => "bobby@bobbydeveloper", "pwd" => "t130b315", "Database" => "registrasi", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
+        $connectionInfo = array("UID" => "bobby@bobbydeveloper", "pwd" => "T130b315", "Database" => "registrasi", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
         $serverName = "tcp:bobbydeveloper.database.windows.net,1433";
         $conn = sqlsrv_connect($serverName, $connectionInfo);
-        $conn = new PDO("sqlsrv:server = tcp:bobbydeveloper.database.windows.net,1433; Database = registrasi", "bobby", "t130b315");
+        $conn = new PDO("sqlsrv:server = tcp:bobbydeveloper.database.windows.net,1433; Database = registrasi", "bobby", "T130b315");
         $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
     } catch(Exception $e) {
         echo "Failed: " . $e;
