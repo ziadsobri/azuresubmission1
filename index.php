@@ -26,18 +26,13 @@
        <input type="submit" name="load_data" value="Load Data" />
  </form>
  <?php
-    $host = "<Nama server database Anda>";
-    $user = "<Nama admin database Anda>";
-    $pass = "<Password admin database Anda>";
-    $db = "<Nama database Anda>";
-
     try {
-        $conn = new PDO("sqlsrv:server = $host; Database = $db", $user, $pass);
+        $conn = new PDO("sqlsrv:server = tcp:bobbydeveloper.database.windows.net,1433; Database = registrasi", "bobby", "T130b315");
         $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-    } catch(Exception $e) {
-        echo "Failed: " . $e;
+    } catch(PDOException $e) {
+        print("Error connecting to SQL Server.");
+        die(print_r($e));
     }
-
     if (isset($_POST['submit'])) {
         try {
             $name = $_POST['name'];
@@ -56,7 +51,6 @@
         } catch(Exception $e) {
             echo "Failed: " . $e;
         }
-
         echo "<h3>Your're registered!</h3>";
     } else if (isset($_POST['load_data'])) {
         try {
